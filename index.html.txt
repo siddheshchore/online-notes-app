@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Notes App</title>
+</head>
+<body>
+  <h1>My Notes App</h1>
+  <input id="note" placeholder="Write note">
+  <button onclick="saveNote()">Save</button>
+
+  <script>
+    async function saveNote() {
+      let note = document.getElementById("note").value;
+
+      await fetch("http://YOUR-EC2-IP:3000/add", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({note})
+      });
+
+      alert("Saved!");
+    }
+  </script>
+</body>
+</html>
